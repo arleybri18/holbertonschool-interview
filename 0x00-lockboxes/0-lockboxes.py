@@ -7,17 +7,15 @@ def canUnlockAll(boxes):
        Iterate over keys array, and add new keys to opened set
        Return True if all boxes opened, else False
     '''
-    if len(boxes[0]) != 0:
-        opened = {0}
-        keys = boxes[0]
-        for x in range(len(boxes)):
-            if len(boxes[x]) == 0:
-                opened.add(x)
 
-        for key in keys:
-            if key not in opened:
-                keys += boxes[key]
-                opened.add(key)
-    else:
-        return False
+    opened = set([0])
+    keys = boxes[0]
+    for x in range(len(boxes)):
+        if len(boxes[x]) == 0:
+            opened.add(x)
+
+    for key in keys:
+        if key not in opened and key < len(boxes):
+            keys += boxes[key]
+            opened.add(key)
     return len(boxes) == len(opened)
