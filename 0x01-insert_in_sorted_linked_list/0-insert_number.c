@@ -23,17 +23,23 @@ listint_t *insert_node(listint_t **head, int number)
 		free(new);
 		return (NULL);
 	}
+	/* Validate if not exist list*/
 	if (*head == NULL)
 		*head = new;
 	else
 	{
+		/* move over list */
 		while (current != NULL && current->n < number)
 		{
 			previous = current;
 			current = current->next;
 		}
 		new->n = number;
-		previous->next = new;
+		/* validate if the number is in the first position */
+		if (previous == current)
+			*head = new;
+		else
+			previous->next = new;
 		new->next = current;
 	}
 
