@@ -60,11 +60,4 @@ def read_stdin():
             signal.signal(signal.SIGINT, signal_handler)
 
 
-def main():
-    """ Main function """
-
-    read_stdin()
-
-
-if __name__ == "__main__":
-    main()
+read_stdin()
