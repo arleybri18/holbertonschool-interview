@@ -2,6 +2,7 @@
 """ 0. Log parsing
 Write a script that reads stdin line by line and computes metrics
 """
+
 import sys
 import signal
 
@@ -21,10 +22,10 @@ status_codes = {
 def print_values():
     """ Print formated values"""
 
-    print("File size: {:d}".format(file_size))
+    print("File size: {}".format(file_size))
     for k, v in status_codes.items():
         if v > 0:
-            print("{:s}: {:d}".format(k, v))
+            print("{}: {}".format(k, v))
 
 
 def signal_handler(sig, frame):
