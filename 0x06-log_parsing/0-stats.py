@@ -27,16 +27,6 @@ def print_values():
             print("{:s}: {:d}".format(k, v))
 
 
-def reset_values():
-    """ Clean values """
-
-    global line_count, file_size, status_codes
-    line_count = 1
-    file_size = 0
-    for k in status_codes.keys():
-        status_codes[k] = 0
-
-
 def signal_handler(sig, frame):
     """signal_handler"""
 
@@ -56,9 +46,9 @@ def read_stdin():
             line_count += 1
             if line_count > 10:
                 print_values()
-                reset_values()
+                line_count = 0
             signal.signal(signal.SIGINT, signal_handler)
+    print_values()
 
 
 read_stdin()
-print_values()
