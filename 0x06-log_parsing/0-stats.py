@@ -48,7 +48,6 @@ def read_stdin():
                 print_values()
                 line_count = 0
             signal.signal(signal.SIGINT, signal_handler)
-    print_values()
 
 
 read_stdin()
