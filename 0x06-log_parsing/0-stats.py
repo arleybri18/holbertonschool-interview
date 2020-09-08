@@ -3,6 +3,7 @@
 Write a script that reads stdin line by line and computes metrics
 """
 import sys
+import signal
 
 line_count = 1
 file_size = 0
@@ -36,6 +37,12 @@ def reset_values():
         status_codes[k] = 0
 
 
+def signal_handler(sig, frame):
+    """signal_handler"""
+
+    print_values()
+
+
 def read_stdin():
     """ Read stdin lines """
 
@@ -50,6 +57,7 @@ def read_stdin():
             if line_count > 10:
                 print_values()
                 reset_values()
+            signal.signal(signal.SIGINT, signal_handler)
 
 
 def main():
@@ -59,7 +67,4 @@ def main():
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print_values()
+    main()
