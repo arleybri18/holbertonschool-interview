@@ -61,3 +61,4 @@ def read_stdin():
 
 
 read_stdin()
+print_values()
