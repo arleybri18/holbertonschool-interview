@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+""" 0. Log parsing
+Write a script that reads stdin line by line and computes metrics
+"""
 import sys
 
 line_count = 1
@@ -15,6 +18,7 @@ status_codes = {
 
 
 def print_values():
+    """ Print formated values"""
     print("File size: {:d}".format(file_size))
     for k, v in status_codes.items():
         if v > 0:
@@ -22,6 +26,7 @@ def print_values():
 
 
 def reset_values():
+    """ Clean values """
     global line_count, file_size, status_codes
     line_count = 1
     file_size = 0
@@ -30,6 +35,7 @@ def reset_values():
 
 
 def read_stdin():
+    """ Read stdin lines """
     global line_count, file_size, status_codes
     for line in sys.stdin:
         aux = line.rstrip().split('"')
@@ -43,6 +49,7 @@ def read_stdin():
 
 
 def main():
+    """ Main function """
     read_stdin()
 
 
