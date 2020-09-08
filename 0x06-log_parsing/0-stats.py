@@ -38,14 +38,15 @@ def read_stdin():
     """ Read stdin lines """
     global line_count, file_size, status_codes
     for line in sys.stdin:
-        aux = line.rstrip().split('"')
-        aux = aux[2].split()
-        status_codes[aux[0]] += 1
-        file_size += int(aux[1])
-        line_count += 1
-        if line_count > 10:
-            print_values()
-            reset_values()
+        if line != "":
+            aux = line.rstrip().split('"')
+            aux = aux[2].split()
+            status_codes[aux[0]] += 1
+            file_size += int(aux[1])
+            line_count += 1
+            if line_count > 10:
+                print_values()
+                reset_values()
 
 
 def main():
