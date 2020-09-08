@@ -40,14 +40,15 @@ def read_stdin():
     for line in sys.stdin:
         if line != "":
             aux = line.rstrip().split('"')
-            aux = aux[2].split()
-            status_codes[aux[0]] += 1
-            file_size += int(aux[1])
-            line_count += 1
-            if line_count > 10:
-                print_values()
-                line_count = 0
-            signal.signal(signal.SIGINT, signal_handler)
+            if len(aux) == 3:
+                aux = aux[2].split()
+                status_codes[aux[0]] += 1
+                file_size += int(aux[1])
+                line_count += 1
+                if line_count > 10:
+                    print_values()
+                    line_count = 0
+                signal.signal(signal.SIGINT, signal_handler)
     print_values()
 
 
