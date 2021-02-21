@@ -1,0 +1,1 @@
+Method that return the minimum number of operations to reach a number
